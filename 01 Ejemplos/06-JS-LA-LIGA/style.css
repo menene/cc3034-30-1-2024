@@ -1,0 +1,45 @@
+#logo {
+    width: 100%;
+    text-align: center;
+}
+
+#posiciones {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#posiciones td, #posiciones th {
+    border: 1px solid #d5d5d5;
+    padding: 8px;
+}
+
+#posiciones tr:nth-child(even) {
+    background-color:#ddd;
+}
+
+#posiciones tr:hover {
+    background-color: #ff4b44;
+}
+
+.team-logo {
+    width: 50px;
+}
+
+.champions {
+    background-color: blue;
+    color: white;
+}
+
+.europa {
+    background-color: orange;
+    color: white;
+}
+
+.conference {
+    background-color: green;
+    color: white;
+}
+
+.descenso {
+    background-color: aqua;
+}

@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: dockerfiles/app/Dockerfile
+        volumes:
+            - "./app:/var/www/html"
+        ports:
+            - "8082:80"
+    mysql:
+        build:
+            context: ./
+            dockerfile: dockerfiles/mysql/Dockerfile
+        volumes:
+            - "mysql-data:/var/lib/mysql"
+        environment:
+            - MYSQL_ROOT_PASSWORD=secret
+            - MYSQL_DATABASE=db_name
+        ports:
+            - "33069:3306"
+
+volumes:
+    mysql-data:
+        driver: "local"
