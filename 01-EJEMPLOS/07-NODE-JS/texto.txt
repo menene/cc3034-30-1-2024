@@ -1,0 +1,1 @@
+Esta es una cadena de texto dentro de un archivo que esta en la misma carpeta que el script principal 🤓
