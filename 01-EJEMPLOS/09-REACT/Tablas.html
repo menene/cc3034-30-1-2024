@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas</title>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function TableRow(props) {
+            const [cantidad, setCantidad] = React.useState(props.producto.cantidad);
+            const [subTotal, setSubTotal] = React.useState(props.producto.cantidad * props.producto.precio);
+
+            const subtotal = (event) => {
+                setSubTotal(event.target.value * props.producto.precio);
+                setCantidad(event.target.value);
+            };
+
+            return <tr key={props.producto.id}>
+                <td>{props.producto.producto}</td>
+                <td>{props.producto.precio}</td>
+                <td>
+                    <input type="text" value={cantidad} onChange={subtotal} />
+                </td>
+                <td>{subTotal}</td>
+            </tr>
+        }
+
+        function Table(props) {
+            return <table border="1">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Sub-Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {props.productos.map((producto) => (
+                        <TableRow key={producto.id} producto={producto} />
+                    ))}
+                </tbody>
+            </table>
+        }
+
+        function App(props) {
+            const productos = [
+                { id: 1, producto: "Agua Pura", precio: 10, cantidad: 1 },
+                { id: 2, producto: "Pollo", precio: 20, cantidad: 1 },
+                { id: 3, producto: "Pasta", precio: 30, cantidad: 1 },
+                { id: 4, producto: "Coca Cola", precio: 40, cantidad: 1 },
+            ]
+
+            return <div>
+                <h1>Carreta de compras</h1>
+                <Table productos={productos} />
+            </div>
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

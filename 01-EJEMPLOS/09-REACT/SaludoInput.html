@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ej 01</title>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Saludo(props) {
+            const [nombre, setNombre] = React.useState("Erick");
+
+            const renombrar = (event) => {
+                setNombre(event.target.value);
+            };
+
+            return <div>
+                <h1>Hola {nombre}</h1>
+                <input type="text" value={nombre} onChange={renombrar} />
+            </div>
+        }
+
+        ReactDOM.render(<Saludo />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World - React</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        const helloWorldElement = React.createElement('div', null, 'Hello World!');
+
+        ReactDOM.render(helloWorldElement, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

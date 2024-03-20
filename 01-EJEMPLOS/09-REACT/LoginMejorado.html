@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login (casi)</title>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Dashboard({ titulo, salir }) {
+            return <div>
+                <h1>{titulo}</h1>
+                <button onClick={salir}>Logout</button>
+            </div>
+        }
+
+        function Form({ ingresar }) {
+            return <div>
+                <h1>Necesitas iniciar sesión</h1>
+                <button onClick={ingresar}>Login</button>
+            </div>
+        }
+
+        function Login(props) {
+            const [logueado, cambiarEstado] = React.useState(false);
+
+            const ingresar = () => {
+                cambiarEstado(true);
+            };
+
+            const salir = () => {
+                cambiarEstado(false);
+            };
+
+            if (logueado) {
+                return <Dashboard salir={salir} titulo="Hola" />
+            } else {
+                return <Form ingresar={ingresar} />
+            }
+        }
+
+        function App(props) {
+            return <Login />
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
