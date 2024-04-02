@@ -2,8 +2,8 @@ const Pokemon = () => {
     const [pokemones, setPokemones] = React.useState([])
 
     async function pokeApi() {
-        let listado = await fetch('https://pokeapi.co/api/v2/pokemon?limit=3&offset=0')
-        let listado_json = await listado.json()
+        const listado = await fetch('https://pokeapi.co/api/v2/pokemon?limit=3&offset=0')
+        const listado_json = await listado.json()
 
         setPokemones(listado_json.results)
     }
