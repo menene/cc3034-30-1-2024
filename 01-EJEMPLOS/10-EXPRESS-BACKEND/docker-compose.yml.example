@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: dockerfiles/app/Dockerfile
+        ports:
+            - "3001:3000"
+        volumes:
+            - .:/app
+        depends_on:
+            - mysql
+    mysql:
+        build:
+            context: ./
+            dockerfile: dockerfiles/mysql/Dockerfile
+        ports:
+            - "33061:3306"
+        volumes:
+            - "mysql-data:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_USER: login_user
+            MYSQL_PASSWORD: login_pasword
+            MYSQL_DATABASE: blog_db
+volumes:
+    mysql-data:
+        driver: "local"
